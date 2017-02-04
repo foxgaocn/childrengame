@@ -7,7 +7,7 @@ module ChildrenGame
     attr_reader :head
 
     def initialize(size)
-      raise ArgumentError.new("Children size should be greater than 0") if size <= 0
+      raise ArgumentError.new("Children size should be an integer greater than 0") if invalid_number(size)
 
       @size = size
       @head = current_node = ChildrenGame::Child.new(1, nil, nil)
@@ -21,7 +21,7 @@ module ChildrenGame
     end
 
     def remove_at(pos)
-      raise ArgumentError.new("Remove position should be greater than 0") if pos <= 0
+      raise ArgumentError.new("Remove position should be an integer greater than 0") if invalid_number(pos)
       return nil if @size == 1
 
       node_to_remove = find_node_to_remove(pos)
@@ -45,6 +45,9 @@ module ChildrenGame
     end
 
     private
+    def invalid_number(number)
+      number.nil? || !number.is_a?(Integer) || number <= 0
+    end
     
     def find_node_to_remove(pos)
       pos_in_circle = (pos - 1) % @size

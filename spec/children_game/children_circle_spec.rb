@@ -7,6 +7,14 @@ module ChildrenGame
         expect{ChildrenCircle.new(0)}.to raise_error(ArgumentError)
       end
 
+      it 'raise error if circle size is not provided' do
+        expect{ChildrenCircle.new}.to raise_error(ArgumentError)
+      end
+
+      it 'raise error if circle size is not integer' do
+        expect{ChildrenCircle.new('3')}.to raise_error(ArgumentError)
+      end
+
       it 'create a single node if circle size is 1' do
         circle = ChildrenCircle.new(1)
         expect(circle.head.prev_child).to eql circle.head
@@ -35,6 +43,14 @@ module ChildrenGame
 
       it 'raise error if position is <= 0' do
         expect{circle.remove_at(0)}.to raise_error(ArgumentError)
+      end
+
+      it 'raise error if position is not provided' do
+        expect{circle.remove_at}.to raise_error(ArgumentError)
+      end
+
+      it 'raise error if position is not integer' do
+        expect{circle.remove_at('0')}.to raise_error(ArgumentError)
       end
 
       context 'when circle size is 1' do
