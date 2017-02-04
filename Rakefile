@@ -9,4 +9,11 @@ end
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => :spec
+
+desc 'run both BDD and Unit tests'
+task :all_tests do
+  Rake::Task["spec"].invoke
+  Rake::Task["features"].invoke
+end
+
+task :default => :all_tests
