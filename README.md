@@ -44,8 +44,12 @@ To run the program:
 ```
 ./bin/run play -t 5 -p 3
 ```
-where -t is the total number of the children in the circle
--p is the position where the child should be removed
+Usage:
+  run play -p, --position=N -t, --total=N
+
+Options:
+  -t, --total=N
+  -p, --position=N
 
 #### If you don't have ruby environment
 You can get the docker image and run the program.
@@ -68,5 +72,9 @@ To run the program:
 ```
 docker run --rm -t foxgaocn:children_game ./bin/run play -t 5 -p 3
 ```
-where -t is the total number of the children in the circle
--p is the position where the child should be removed
+Usage:
+  run play -p, --position=N -t, --total=N
+
+Options:
+  -t, --total=N
+  -p, --position=N
