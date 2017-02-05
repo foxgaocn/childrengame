@@ -44,12 +44,12 @@ To run the program:
 ```
 ./bin/run play -t 5 -p 3
 ```
-Usage:
-  run play -p, --position=N -t, --total=N
+Usage:  
+  run play -p, --position=N -t, --total=N  
 
-Options:
-  -t, --total=N
-  -p, --position=N
+Options:  
+  -t, --total=N  
+  -p, --position=N  
 
 #### If you don't have ruby environment
 You can get the docker image and run the program.
@@ -72,9 +72,9 @@ To run the program:
 ```
 docker run --rm -t foxgaocn:children_game ./bin/run play -t 5 -p 3
 ```
-Usage:
-  run play -p, --position=N -t, --total=N
+Usage:  
+  run play -p, --position=N -t, --total=N  
 
-Options:
-  -t, --total=N
-  -p, --position=N
+Options:  
+  -t, --total=N  
+  -p, --position=N  
