@@ -55,22 +55,22 @@ Options:
 You can get the docker image and run the program.
 To run all tests:
 ```
-docker run --rm -t foxgaocn:children_game rake
+docker run --rm -t foxgaocn/children_game rake
 ```
 
 To run unit tests only:
 ```
-docker run --rm -t foxgaocn:children_game rake spec
+docker run --rm -t foxgaocn/children_game rake spec
 ```
 
 To run BDD tests only:
 ```ruby
-docker run --rm -t foxgaocn:children_game rake features
+docker run --rm -t foxgaocn/children_game rake features
 ```
 
 To run the program:
 ```
-docker run --rm -t foxgaocn:children_game ./bin/run play -t 5 -p 3
+docker run --rm -t foxgaocn/children_game ./bin/run play -t 5 -p 3
 ```
 Usage:  
   run play -p, --position=N -t, --total=N  
