@@ -1,41 +1,72 @@
 # ChildrenGame
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/children_game`. To experiment with that code, run `bin/console` for an interactive prompt.
+### The problem:
+Consider the following children’s game:
+* n children stand around a circle. 
+* Starting with a given child and working clockwise, each child gets a sequential number, which we will refer to as it’s id. 
+* Then starting with the first child, they count out from 1 until k. The k’th child is now out and leaves the circle. The count starts again with the child immediately next to the eliminated one.
+* Children are so removed from the circle one by one. The winner is the child left standing last.
 
-TODO: Delete this and the text above, and describe your gem
+Implement the game such that, when you enter n and k, it returns the sequence of children as they go out, and the id of the winning child.
 
-## Installation
+### The design
+The problem can be abstracted as "keep removing K'th node in a circle with N nodes until the last one"
 
-Add this line to your application's Gemfile:
+Two ruby classes are created to model this problem. The ChildCircle class is a circular linked list, and the Child class is the Node. The ChildCircle has a remove_at method, which will remove the node in specified position.
 
+The performance of this design:
+* Time: O(N log N)
+* Space: O(N)
+
+### How to run
+#### If you have ruby environment in your local machine
 ```ruby
-gem 'children_game'
+git clone git@github.com:foxgaocn/childrengame.git
+cd  childrengame
+./bin/setup
+```
+To run all tests:
+```
+rake
 ```
 
-And then execute:
+To run unit tests only:
+```
+rake spec
+```
 
-    $ bundle
+To run BDD tests only:
+```ruby
+rake features
+```
 
-Or install it yourself as:
+To run the program:
+```
+./bin/run play -t 5 -p 3
+```
+where -t is the total number of the children in the circle
+-p is the position where the child should be removed
 
-    $ gem install children_game
+#### If you don't have ruby environment
+You can get the docker image and run the program.
+To run all tests:
+```
+docker run --rm -t foxgaocn:children_game rake
+```
 
-## Usage
+To run unit tests only:
+```
+docker run --rm -t foxgaocn:children_game rake spec
+```
 
-TODO: Write usage instructions here
+To run BDD tests only:
+```ruby
+docker run --rm -t foxgaocn:children_game rake features
+```
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/children_game.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+To run the program:
+```
+docker run --rm -t foxgaocn:children_game ./bin/run play -t 5 -p 3
+```
+where -t is the total number of the children in the circle
+-p is the position where the child should be removed
